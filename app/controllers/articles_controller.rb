@@ -5,34 +5,38 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @articles = Article.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
-  # def new
-  #   @task = Article.new
-  # end
+  def new
+    @article = Article.new
+  end
 
-  # def create
+  def create
 
-  #   task = Article.create(task_params)
-  #   redirect_to task_path(task)
-  # end
+    article = Article.create(article_params)
+    redirect_to article_path(article)
+  end
 
-  # def edit
-  #   @task = Article.find(params[:id])
-  # end
+  def edit
+    @article = Article.find(params[:id])
+  end
 
-  # def update
-  # @task = Article.find(params[:id])
-  # @task.update(task_params)
-  # redirect_to task_path(@task)
-  # end
+  def update
+  @article = Article.find(params[:id])
+  @article.update(article_params)
+  redirect_to article_path(@article)
+  end
 
-  # def destroy
-  #   @task = Article.find(params[:id])
-  #   @task.destroy
-  #   redirect_to tasks_path
-  # end
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to articles_path
+  end
+  private
 
+  def article_params
+  params.require(:article).permit(:title, :content)
+  end
 
 end

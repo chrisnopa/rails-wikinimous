@@ -1,0 +1,7 @@
+<h2><%= @article.title %></h2>
+<p style="strong"><%= @article.content %></p>
+<p>created : <%= @article.created_at %></p>
+<p>updated : <%= @article.updated_at %></p>
+    <p><%= link_to "editer l'article", edit_article_path(@article) %></p>
+  <p><%= link_to "détruire l'article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }%></p>
+<p><%= link_to "Retour aux articles", articles_path %></p>
